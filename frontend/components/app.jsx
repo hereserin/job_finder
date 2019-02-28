@@ -11,7 +11,6 @@ const App = () => {
     <div>
       <NavBar />
       <Route exact path="/job_listings" component={SearchBar} />
-      <h1>This is my app.</h1>
       <Route exact path="/job_listings" component={JobListingsIndex} />
       <Route
         exact

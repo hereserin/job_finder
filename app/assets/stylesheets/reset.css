@@ -31,8 +31,8 @@ body {
   --blue: #3f51b5;
   --light-blue: #767faf;
   --off-black: #494343;
-  --grey: #a59a8a;
-  --light-grey: #e0e5e6;
+  --grey: #d1cede;
+  --light-grey: #eef4f5;
   --eggplant: #764465;
   --teal: #009687;
   background-color: var(--light-grey);

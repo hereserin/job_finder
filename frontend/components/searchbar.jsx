@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
     return (
       <div className="search-bar">
         <div className="search-bar-input-and-button-container">
-          <input placeholder="Search Jobs" />
+          Search Jobs <input placeholder="Search Jobs" />
           <button>Search</button>
         </div>
       </div>

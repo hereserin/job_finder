@@ -1,6 +1,6 @@
 class Api::JobListingsController < ApplicationController
   def index
-    @job_listings = JobListing.all
+    @job_listings = JobListing.includes(:company).all
     render 'api/job_listings/index'
   end
 

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { fetchJobListings } from "../actions/job_listings_actions";
+import JobListingIndexItem from "./job_listing_index_item";
 
 class JobListingsIndex extends React.Component {
   componentDidMount() {
@@ -22,17 +23,13 @@ class JobListingsIndex extends React.Component {
     console.log(jobsArr);
     const list = jobsArr.map(jobListing => {
       return (
-        <li key={jobListing.id}>
-          {jobListing.title}
-          <span
-            onClick={() => {
-              this.props.history.push(`/job_listings/${jobListing.id}`);
-            }}
-          >
-            {" "}
-            ...CLICK HERE
-          </span>
-        </li>
+        <JobListingIndexItem
+          key={jobListing.id}
+          id={jobListing.id}
+          title={jobListing.title}
+          company={jobListing.company_name.toUpperCase()}
+          jobLocation={jobListing.location}
+        />
       );
     });
     return list;
@@ -41,8 +38,8 @@ class JobListingsIndex extends React.Component {
   render() {
     return (
       <section>
-        <h2>Job Listings: </h2>
-        <ul>{this.composeJobsList()}</ul>
+        <p>Job Listings: </p>
+        <ul className="job-listing-index">{this.composeJobsList()}</ul>
       </section>
     );
   }
