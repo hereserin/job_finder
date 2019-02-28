@@ -7,6 +7,6 @@
 #
 
 class Skill < ApplicationRecord
-  has_many :job_listings
+  has_many :jobs_listings,
   through: :job_skills
 end

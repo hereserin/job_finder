@@ -19,10 +19,10 @@ class JobListing < ApplicationRecord
   belongs_to :region
   belongs_to :experience_level
 
-  has_many :keywords
-  through: :job_keywords
+  has_many :keywords,
+  through: :jobs_keywords
 
-  has_many :skills
-  through: :job_skills
+  has_many :skills,
+  through: :jobs_skills
 
 end

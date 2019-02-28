@@ -7,6 +7,6 @@
 #
 
 class Keyword < ApplicationRecord
-  has_many :job_listings
-  through: :job_keywords
+  has_many :job_listings,
+  through: :jobs_keywords
 end
