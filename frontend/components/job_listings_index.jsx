@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 import { fetchJobListings } from "../actions/job_listings_actions";
 
 class JobListingsIndex extends React.Component {
@@ -20,7 +21,19 @@ class JobListingsIndex extends React.Component {
     const jobsArr = this.mapJobsListings();
     console.log(jobsArr);
     const list = jobsArr.map(jobListing => {
-      return <li key={jobListing.id}>{jobListing.title}</li>;
+      return (
+        <li key={jobListing.id}>
+          {jobListing.title}
+          <span
+            onClick={() => {
+              this.props.history.push(`/job_listings/${jobListing.id}`);
+            }}
+          >
+            {" "}
+            ...CLICK HERE
+          </span>
+        </li>
+      );
     });
     return list;
   }
@@ -49,7 +62,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(JobListingsIndex);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(JobListingsIndex)
+);

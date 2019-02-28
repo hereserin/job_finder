@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <h1>This is my app.</h1>
-      <JobListingsIndex />
+      <Route exact path="/job_listings" component={JobListingsIndex} />
     </div>
   );
 };
