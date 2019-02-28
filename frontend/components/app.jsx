@@ -3,10 +3,14 @@ import { Provider } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import JobListingsIndex from "./job_listings_index";
 import JobListingsShow from "./job_listings_show";
+import NavBar from "./navbar";
+import SearchBar from "./searchbar";
 
 const App = () => {
   return (
     <div>
+      <NavBar />
+      <Route exact path="/job_listings" component={SearchBar} />
       <h1>This is my app.</h1>
       <Route exact path="/job_listings" component={JobListingsIndex} />
       <Route
