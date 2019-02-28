@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Region.delete_all
+ExperienceLevel.delete_all
+Keyword.delete_all
+Skill.delete_all
+Company.delete_all
+JobListing.delete_all
+JobsKeyword.delete_all
+JobsSkill.delete_all
+
+# ____________________REGIONS_________________________________
 ma = Region.create!(
   region: "MA"
 )
@@ -18,6 +28,7 @@ tx = Region.create!(
   region: "TX"
 )
 
+# ____________________EXPERIENCE LEVELS_________________________________
 senior = ExperienceLevel.create!(
   experience_level: "Senior Level"
 )
@@ -31,9 +42,134 @@ internship = ExperienceLevel.create!(
   experience_level: "Internship"
 )
 
+# ____________________KEYWORDS_________________________________
+engineering = Keyword.create!(
+  keyword: "engineering"
+)
+
+frontend = Keyword.create!(
+  keyword: "frontend"
+)
+
+ecommerce = Keyword.create!(
+  keyword: "eCommerce"
+)
+
+lifestyle = Keyword.create!(
+  keyword: "lifestyle"
+)
+
+marketing = Keyword.create!(
+  keyword: "marketing"
+)
+
+mobile = Keyword.create!(
+  keyword: "mobile"
+)
+
+
+# ____________________SKILLS_________________________________
+
+digsocmarketing = Skill.create!(
+  skill: "Digital/Social Marketing"
+)
+
+kpi = Skill.create!(
+  skill: "KPIs"
+)
+
+communication = Skill.create!(
+  skill: "Communication"
+)
+
+product_management = Skill.create!(
+  skill: "Product Management"
+)
+
+payroll = Skill.create!(
+  skill: "Payroll"
+)
+
+excel = Skill.create!(
+  skill: "Microsoft Excel"
+)
+
+googleapps = Skill.create!(
+  skill: "Google Apps"
+)
+
+namely = Skill.create!(
+  skill: "Namely HRIS"
+)
+
+detail = Skill.create!(
+  skill: "Attention to Detail"
+)
+
+sql = Skill.create!(
+  skill: "SQL"
+)
+
+ios = Skill.create!(
+  skill: "iOS Development"
+)
+
+swift = Skill.create!(
+  skill: "Swift"
+)
+
+object_c = Skill.create!(
+  skill: "Objective-C"
+)
+
+xcode = Skill.create!(
+  skill: "Xcode"
+)
+
+bash = Skill.create!(
+  skill: "Bash"
+)
+
+ruby = Skill.create!(
+  skill: "Ruby"
+)
+
+javascript = Skill.create!(
+  skill: "JavaScript"
+)
+
+html = Skill.create!(
+  skill: "HTML"
+)
+
+css = Skill.create!(
+  skill: "CSS"
+)
+
+node = Skill.create!(
+  skill: "Node.js"
+)
+
+react = Skill.create!(
+  skill: "React"
+)
+
+python = Skill.create!(
+  skill: "Python"
+)
+
+django = Skill.create!(
+  skill: "Django"
+)
+
+programming = Skill.create!(
+  skill: "Computer Programming"
+)
+
+# ____________________COMPANIES_________________________________
 nike = Company.create!(
   name: "Nike",
-  logo: "https://assets.themuse.com/uploaded/companies/1403/small_logo.png
+  logo_url: "https://assets.themuse.com/uploaded/companies/1403/small_logo.png
 ",
   location: "New York City, NY",
   description: "Nike is a company based on Innovation. It is in our nature to innovate. Think something nobody else thinks, build something nobody else builds, or improve something that already exists. Curiosity is life. Assumption is death."
@@ -41,7 +177,7 @@ nike = Company.create!(
 
 outdoor_voices = Company.create!(
   name: "Outdoor Voices",
-  logo: "https://assets.themuse.com/uploaded/companies/738/small_logo.png",
+  logo_url: "https://assets.themuse.com/uploaded/companies/738/small_logo.png",
   location: "Austin, TX",
   description: "About Outdoor Voices:
 We believe in Doing Things — moving your body and having fun with friends. From dog jogs to dodgeball, we make clothes for sweating without the added pressure. Our team is made up of casual Recreationalists who approach activity with ease, humor, and delight. Since launching in 2014, Outdoor Voices has been featured in The New York Times, Vogue, Wall Street Journal, GQ, Forbes and Fast Co."
@@ -49,7 +185,7 @@ We believe in Doing Things — moving your body and having fun with friends. Fro
 
 wsj = Company.create!(
   name: "The Wall Street Journal",
-  logo: "https://assets.themuse.com/uploaded/companies/365/small_logo.png
+  logo_url: "https://assets.themuse.com/uploaded/companies/365/small_logo.png
 ",
   location: "New York City, NY",
   description: "About the Wall Street Journal
@@ -61,10 +197,13 @@ The Wall Street Journal is a global news organization that provides leading news
 
 wayfair = Company.create!(
   name: "Wayfair",
-  logo: "https://assets.themuse.com/uploaded/companies/1631/small_logo.png" ,
+  logo_url: "https://assets.themuse.com/uploaded/companies/1631/small_logo.png" ,
   location: "Boston, MA",
   description: "Over the past several years, Wayfair has been heavily investing to build the best e-commerce shopping app across devices to help consumers create a home they love, wherever they may be. These efforts have resulted in a highly-rated (4.8 stars on the App Store, 4.5 stars on Google Play), awarded (won the 2018 Webby for shopping), and featured (Apple App of the Day) experience. But our job is far from finished, with substantial opportunities to deliver against a bold app vision, grow user adoption, improve innovative features like View in Room 3D and Search with Photo, and invent the next wave of revolutionary experiences."
 )
+
+
+# ____________________JOB LISTINGS_________________________________
 
 wayfair_proj_manager = JobListing.create!(
   company_id: wayfair.id,
@@ -151,7 +290,7 @@ Dow Jones , Making Careers Newsworthy
 
 All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, national origin, protected veteran status, or disability status. EEO/AA/M/F/Disabled/Vets .
 
-Dow Jones is committed to providing reasonable accommodation for qualified individuals with disabilities, in our job application and/or interview process. If you need assistance or accommodation in completing your application, due to a disability, please reach out to us at TalentResourceTeam@dowjones.com . Please put "Reasonable Accommodation" in the subject line.
+Dow Jones is committed to providing reasonable accommodation for qualified individuals with disabilities, in our job application and/or interview process. If you need assistance or accommodation in completing your application, due to a disability, please reach out to us at TalentResourceTeam@dowjones.com . Please put 'Reasonable Accommodation' in the subject line.
 
 Business Area: NEWS/WSJ
 
@@ -254,7 +393,7 @@ The latest OV gear and—of course—Recreation",
   experience_level_id: mid.id
 )
 
-wayfair_proj_manager = JobListing.create!(
+nike_director = JobListing.create!(
   company_id: nike.id,
   title: "Senior Director, Product Marketing, SNKRS",
   location: "New York City, NY",
@@ -265,12 +404,12 @@ As the Senior Director of Product Marketing, you will 1) help build and execute 
 YOUR ROLE:
 • Drive the SNKRS product positioning in partnership with a cross-functional studio team (Product Overseeing, Design, Engineering)
 • Create and manage campaigns that showcase SNKRS product features
-• Deepen partnership with quantitative and qualitative insights teams to leverage data insights to improve consumer happiness; build tactics to enhance product "fairness" for consumers
+• Deepen partnership with quantitative and qualitative insights teams to leverage data insights to improve consumer happiness; build tactics to enhance product 'fairness' for consumers
 • Drive new pilot programs with global and geo partnership; leverage deep understanding of consumer segmentation to target new products or services (digital or physical) to under-served segments
 • Provide input to seasonal pitchbacks for global and geo campaigns across all categories
 • Coordinate and scale cross-functional digital marketing efforts around the world
 • Manage day-to-day workload and priorities of the product marketing team, ensuring everyone brings their A game.
-• Communicate campaign best practices, "playbook", timelines, benefits and results with the larger Nike Digital Marketing org
+• Communicate campaign best practices, 'playbook', timelines, benefits and results with the larger Nike Digital Marketing org
 • Partner with influencer marketing teams to manage community and product influencer outreach
 • As one of the studio team leads, shape the culture and values of our studio to reflect the sneaker community we serve.
 
@@ -312,4 +451,95 @@ s23NYC is Nike's first digital experience studio and the driving force behind so
 ",
   region_id: ny.id,
   experience_level_id: senior.id
+)
+
+# ____________________JOB LISTINGS joins KEYWORDS_______________________
+
+# wayfair_proj_manager, outdoor_payroll, outdoor_frontend, wsj_engineer, nike_director
+# engineering, payroll, frontend, ecommerce, lifestyle, marketing, mobile
+
+a = JobsKeyword.create!(
+  job_id: wayfair_proj_manager.id,
+  keyword_id: ecommerce.id
+)
+b = JobsKeyword.create!(
+  job_id: outdoor_payroll.id,
+  keyword_id: lifestyle.id
+)
+
+
+d = JobsKeyword.create!(
+  job_id: outdoor_frontend.id,
+  keyword_id: engineering.id
+)
+e = JobsKeyword.create!(
+  job_id: outdoor_frontend.id,
+  keyword_id: frontend.id
+)
+f = JobsKeyword.create!(
+  job_id: wsj_engineer.id,
+  keyword_id: engineering.id
+)
+g = JobsKeyword.create!(
+  job_id: wsj_engineer.id,
+  keyword_id: mobile.id
+)
+h = JobsKeyword.create!(
+  job_id: nike_director.id,
+  keyword_id: marketing.id
+)
+i = JobsKeyword.create!(
+  job_id: nike_director.id,
+  keyword_id: lifestyle.id
+)
+
+
+# ____________________JOB LISTINGS joins SKILLS_______________________
+
+# wayfair_proj_manager, outdoor_payroll, outdoor_frontend, wsj_engineer, nike_director
+
+# digsocmarketing, kpi, communication, product_management, payroll, excel, googleapps, namely, detail, sql, ios, swift, object_c, xcode, bash, ruby, javascript, html, css, node, react, python, django, programming
+sj1 = JobsSkill.create!(
+  job_id: wayfair_proj_manager.id,
+  skill_id: sql.id
+)
+sj2 = JobsSkill.create!(
+  job_id: wayfair_proj_manager.id,
+  skill_id: excel.id
+)
+sj3 = JobsSkill.create!(
+  job_id: outdoor_payroll.id,
+  skill_id: excel.id
+)
+sj4 = JobsSkill.create!(
+  job_id: outdoor_frontend.id,
+  skill_id: javascript.id
+)
+sj5 = JobsSkill.create!(
+  job_id: outdoor_frontend.id,
+  skill_id: react.id
+)
+sj6 = JobsSkill.create!(
+  job_id: outdoor_frontend.id,
+  skill_id: python.id
+)
+sj7 = JobsSkill.create!(
+  job_id: outdoor_frontend.id,
+  skill_id: programming.id
+)
+sj8 = JobsSkill.create!(
+  job_id: wsj_engineer.id,
+  skill_id: ios.id
+)
+sj9 = JobsSkill.create!(
+  job_id: wsj_engineer.id,
+  skill_id: programming.id
+)
+sj10 = JobsSkill.create!(
+  job_id: nike_director.id,
+  skill_id: digsocmarketing.id
+)
+sj11 = JobsSkill.create!(
+  job_id: nike_director.id,
+  skill_id: kpi.id
 )
