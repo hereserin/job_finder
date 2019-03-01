@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Region.delete_all
-ExperienceLevel.delete_all
-Keyword.delete_all
-Skill.delete_all
-Company.delete_all
-JobListing.delete_all
-JobsKeyword.delete_all
-JobsSkill.delete_all
+# Region.delete_all
+# ExperienceLevel.delete_all
+# Keyword.delete_all
+# Skill.delete_all
+# Company.delete_all
+# JobListing.delete_all
+# JobsKeyword.delete_all
+# JobsSkill.delete_all
 
 # ____________________REGIONS_________________________________
 ma = Region.create!(
