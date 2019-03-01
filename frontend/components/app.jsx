@@ -10,8 +10,12 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <Route exact path="/job_listings" component={SearchBar} />
-      <Route exact path="/job_listings" component={JobListingsIndex} />
+      <Switch>
+        <Route path="/job_listings/search" component={SearchBar} />
+        <Route exact path="/job_listings" component={SearchBar} />
+      </Switch>
+      <Route path="/job_listings" component={JobListingsIndex} />
+      <Route path="/job_listings/search/:query" component={JobListingsIndex} />
       <Route
         exact
         path="/job_listings/:jobListingId"

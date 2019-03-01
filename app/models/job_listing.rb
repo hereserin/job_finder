@@ -19,10 +19,39 @@ class JobListing < ApplicationRecord
   belongs_to :region
   belongs_to :experience_level
 
+  has_many :jobs_skills
+  has_many :jobs_keywords
+
   has_many :keywords,
   through: :jobs_keywords
 
   has_many :skills,
   through: :jobs_skills
+
+  def self.search_title_keyword_company(query_array)
+    if query_array.length == 1
+
+      return JobListing
+        .joins("LEFT JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
+        .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
+        .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
+        .includes(:company)
+        .where("lower(title) LIKE ? OR lower(keywords.keyword) LIKE ? OR lower(companies.name) LIKE ?",
+        "%#{query_array[0].downcase}%",
+        "%#{query_array[0].downcase}%",
+        "%#{query_array[0].downcase}%")
+    end
+
+    JobListing
+    .joins("LEFT JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
+    .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
+    .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
+    .includes(:company)
+    .where("lower(title) LIKE ? OR lower(keywords.keyword) LIKE ? OR lower(companies.name) LIKE ?",
+    "%#{query_array[0].downcase}%",
+    "%#{query_array[0].downcase}%",
+    "%#{query_array[0].downcase}%")
+      .or(JobListing.search_title_keyword_company(query_array[0..-2]))
+  end
 
 end

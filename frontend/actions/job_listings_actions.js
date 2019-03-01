@@ -23,6 +23,15 @@ export const fetchJobListing = id => {
   };
 };
 
+export const searchJobListings = search => {
+  return dispatch => {
+    dispatch(startLoadingJobListings());
+    return JobListingsAPIUtil.searchJobListings(search).then(payload => {
+      return dispatch(receiveJobListings(payload));
+    });
+  };
+};
+
 const receiveJobListings = jobListings => {
   return {
     type: RECEIVE_JOB_LISTINGS,
