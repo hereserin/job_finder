@@ -33,3 +33,9 @@
   font-style: normal;
   color: var(--teal);
 }
+
+.job-listing-show {
+  padding: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+}

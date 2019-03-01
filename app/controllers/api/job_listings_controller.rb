@@ -5,7 +5,7 @@ class Api::JobListingsController < ApplicationController
   end
 
   def show
-    @job_listing = JobListing.find(params[:id])
+    @job_listing = JobListing.includes(:company).find(params[:id])
     render 'api/job_listings/show'
   end
 end

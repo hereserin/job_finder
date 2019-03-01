@@ -38,7 +38,6 @@ class JobListingsIndex extends React.Component {
   render() {
     return (
       <section>
-        <p>Job Listings: </p>
         <ul className="job-listing-index">{this.composeJobsList()}</ul>
       </section>
     );

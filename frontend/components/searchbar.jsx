@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import fetchJobListings from "./../actions/job_listings_actions";
+import { fetchJobListing } from "../actions/job_listings_actions";
 
 class SearchBar extends React.Component {
   render() {

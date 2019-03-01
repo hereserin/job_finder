@@ -1,5 +1,7 @@
 .search-bar {
   background-color: white;
+  box-shadow: 1px 1px 2px 1px var(--grey);
+  margin-bottom: 15px;
 }
 
 .search-bar-input-and-button-container {
