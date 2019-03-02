@@ -13,8 +13,8 @@ const App = () => {
       <Switch>
         <Route path="/job_listings/search" component={SearchBar} />
         <Route exact path="/job_listings" component={SearchBar} />
+        <Route exact path="/" component={SearchBar} />
       </Switch>
-      <Route path="/job_listings" component={JobListingsIndex} />
       <Route path="/job_listings/search/:query" component={JobListingsIndex} />
       <Route
         exact

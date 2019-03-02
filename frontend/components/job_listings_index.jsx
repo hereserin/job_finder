@@ -1,12 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { fetchJobListings } from "../actions/job_listings_actions";
+import {
+  fetchJobListings,
+  searchJobListings,
+  clearJobListings
+} from "../actions/job_listings_actions";
 import JobListingIndexItem from "./job_listing_index_item";
+import * as QueryParsers from "./../util/search_query_parsers";
 
 class JobListingsIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchJobListings();
+    // this.props.clearJobListings;
+    // debugger;
+    if (this.props.query === undefined) {
+      this.props.fetchJobListings();
+    } else if (
+      !this.props.loading &&
+      Object.keys(this.props.jobListings).length === 0
+    ) {
+      const userQuery = this.parseUrlToUserInput();
+      this.props.searchJobListings({ query: userQuery });
+    }
+  }
+
+  parseUrlToUserInput() {
+    const urlQuery = this.props.match.params.query;
+    return QueryParsers.parseUrlToUserInput(urlQuery);
   }
 
   mapJobsListings() {
@@ -38,15 +58,18 @@ class JobListingsIndex extends React.Component {
   render() {
     return (
       <section>
+        <p>Results for: {this.parseUrlToUserInput()}</p>
         <ul className="job-listing-index">{this.composeJobsList()}</ul>
       </section>
     );
   }
 }
 
-const mapStateToProps = ({ entities }) => {
+const mapStateToProps = ({ entities, ui }, ownProps) => {
   return {
-    jobListings: entities.jobListings
+    jobListings: entities.jobListings,
+    query: ownProps.match.params.query,
+    loading: ui.loading.jobListingsLoading
   };
 };
 
@@ -54,6 +77,12 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchJobListings: () => {
       return dispatch(fetchJobListings());
+    },
+    searchJobListings: query => {
+      return dispatch(searchJobListings(query));
+    },
+    clearJobListings: () => {
+      return dispatch(clearJobListings());
     }
   };
 };

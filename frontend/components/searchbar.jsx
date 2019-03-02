@@ -3,7 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   fetchJobListing,
-  searchJobListings
+  searchJobListings,
+  clearJobListings
 } from "../actions/job_listings_actions";
 import * as QueryParsers from "./../util/search_query_parsers";
 
@@ -26,8 +27,9 @@ class SearchBar extends React.Component {
 
   handleSubmit() {
     const userQuery = this.parseUserInputToUrl();
+    this.props.clearJobListings();
     this.props.searchJobListings({ query: userQuery });
-    this.props.history.push(`job_listings/search/=${userQuery}`);
+    this.props.history.push(`/job_listings/search/=${userQuery}`);
   }
 
   parseUserInputToUrl() {
@@ -58,6 +60,9 @@ const mapDispatchToProps = dispatch => {
     },
     searchJobListings: query => {
       return dispatch(searchJobListings(query));
+    },
+    clearJobListings: () => {
+      return dispatch(clearJobListings());
     }
   };
 };

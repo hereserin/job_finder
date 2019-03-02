@@ -1,5 +1,5 @@
 export const parseUrlToUserInput = urlQuery => {
-  return urlQuery.replace(/[^A-Za-z0-9]/g, " ");
+  return urlQuery.substring(1).replace(/[^A-Za-z0-9]/g, " ");
 };
 
 export const parseUserInputToUrl = userSearchTextInput => {

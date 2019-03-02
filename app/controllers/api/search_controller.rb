@@ -1,6 +1,7 @@
 class Api::SearchController < ApplicationController
 
   def index
+    
     if params[:query].empty?
       @job_listings = JobListing.includes(:company).all
     else

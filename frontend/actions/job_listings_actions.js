@@ -4,6 +4,7 @@ export const RECEIVE_JOB_LISTINGS = "RECEIVE_JOB_LISTINGS";
 export const RECEIVE_JOB_LISTING = "RECEIVE_JOB_LISTING";
 export const START_LOADING_JOB_LISTINGS = "START_LOADING_JOB_LISTINGS";
 export const START_LOADING_JOB_LISTING = "START_LOADING_JOB_LISTING";
+export const CLEAR_JOB_LISTINGS = "CLEAR_JOB_LISTINGS";
 
 export const fetchJobListings = () => {
   return dispatch => {
@@ -53,4 +54,8 @@ export const startLoadingJobListings = () => ({
 
 export const startLoadingJobListing = () => ({
   type: START_LOADING_JOB_LISTING
+});
+
+export const clearJobListings = () => ({
+  type: CLEAR_JOB_LISTINGS
 });
