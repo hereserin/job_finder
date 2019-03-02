@@ -58,7 +58,6 @@ class JobListingsIndex extends React.Component {
   render() {
     return (
       <section>
-        <p>Results for: {this.parseUrlToUserInput()}</p>
         <ul className="job-listing-index">{this.composeJobsList()}</ul>
       </section>
     );

@@ -5,6 +5,7 @@ import JobListingsIndex from "./job_listings_index";
 import JobListingsShow from "./job_listings_show";
 import NavBar from "./navbar";
 import SearchBar from "./searchbar";
+import Footer from "./footer";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         path="/job_listings/:jobListingId"
         component={JobListingsShow}
       />
+      <Footer />
     </div>
   );
 };

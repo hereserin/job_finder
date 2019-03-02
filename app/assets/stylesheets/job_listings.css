@@ -39,3 +39,56 @@
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.job-listing-show-content {
+  background-color: white;
+  display: flex;
+}
+
+.job-listing-show-sidebar {
+  width: 30%;
+  padding: 10px;
+  margin: 20px;
+  color: var(--grey);
+}
+
+.job-listing-show-sidebar p {
+}
+
+.job-listing-show-description {
+  width: 70%;
+  padding: 10px;
+  margin: 20px;
+}
+
+.job-listing-show-title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 60px;
+  text-align: center;
+}
+
+.company-name-in-job-show {
+  font-size: 25px;
+  text-align: center;
+  color: var(--dark-grey);
+}
+
+.apply-now-link {
+  background-color: var(--blue);
+  margin: 25px;
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.apply-now-link {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+.apply-now-link i {
+  margin-left: 15px;
+}

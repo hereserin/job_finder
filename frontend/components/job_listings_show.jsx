@@ -3,10 +3,21 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { fetchJobListing } from "../actions/job_listings_actions";
 import Loader from "./loader";
+import ApplyNowLink from "./job_listings_apply_now";
+import commonmark from "commonmark";
 
 class JobListingsShow extends React.Component {
   componentDidMount() {
     this.props.fetchJobListing(this.props.jobListingId);
+  }
+
+  displayDescription() {
+    var reader = new commonmark.Parser();
+    var writer = new commonmark.HtmlRenderer();
+    var parsed = reader.parse("Hello *world*");
+    var result = writer.render(parsed);
+    const htmlObj = { __html: result };
+    return <div dangerouslySetInnerHTML={htmlObj} />;
   }
 
   render() {
@@ -21,15 +32,29 @@ class JobListingsShow extends React.Component {
     }
     const jobListing = this.props.jobListings[this.props.jobListingId];
     const company = this.props.companies[jobListing.companyId];
+    const descriptionString = "<p>hello</p>";
 
     return (
       <section className="job-listing-show">
-        <h2>{jobListing.title}</h2>
-        <h3 className="company-name-in-job-description">
+        <h2 className="job-listing-show-title">{jobListing.title}</h2>
+        <h3 className="company-name-in-job-show">
           {company.name.toUpperCase()}
         </h3>
-        <img className="company-logo" src={company.logo_url} />
-        <p>{jobListing.description}</p>
+        <ApplyNowLink applyLink={jobListing.application_url} />
+        <div className="job-listing-show-content">
+          <aside className="job-listing-show-sidebar">
+            <img className="company-logo" src={company.logo_url} />
+            <br />
+            <h3>Company Info:</h3>
+            {company.description}
+          </aside>
+          <div className="job-listing-show-description">
+            {this.displayDescription()}
+            {jobListing.description}
+            <br />
+            <ApplyNowLink applyLink={jobListing.application_url} />
+          </div>
+        </div>
       </section>
     );
   }

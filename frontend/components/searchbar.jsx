@@ -37,12 +37,20 @@ class SearchBar extends React.Component {
     return QueryParsers.parseUserInputToUrl(userQueryInput);
   }
 
+  handleSearchInputKeyPress(event) {
+    if (event.key === "Enter") {
+      this.handleSubmit();
+    }
+  }
+
   render() {
     return (
       <div className="search-bar">
         <div className="search-bar-input-and-button-container">
           Search Jobs{" "}
           <input
+            className="tkc-search-bar-input"
+            onKeyPress={e => this.handleSearchInputKeyPress(e)}
             placeholder="Job Title, Keywords or Company Name"
             onChange={this.handleSearchInput}
           />
