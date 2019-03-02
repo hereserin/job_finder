@@ -32,10 +32,10 @@ class JobListing < ApplicationRecord
     if query_array.length == 1
 
       return JobListing
-        .joins("LEFT JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
+        .includes(:company)
+        .joins("LEFT OUTER JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
         .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
         .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
-        .includes(:company)
         .where("lower(title) LIKE ? OR lower(keywords.keyword) LIKE ? OR lower(companies.name) LIKE ?",
         "%#{query_array[0].downcase}%",
         "%#{query_array[0].downcase}%",
@@ -43,10 +43,10 @@ class JobListing < ApplicationRecord
     end
 
     JobListing
-    .joins("LEFT JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
+    .includes(:company)
+    .joins("LEFT OUTER JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
     .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
     .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
-    .includes(:company)
     .where("lower(title) LIKE ? OR lower(keywords.keyword) LIKE ? OR lower(companies.name) LIKE ?",
     "%#{query_array[0].downcase}%",
     "%#{query_array[0].downcase}%",

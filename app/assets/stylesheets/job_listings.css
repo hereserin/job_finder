@@ -58,7 +58,19 @@
 .job-listing-show-description {
   width: 70%;
   padding: 10px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.job-listing-show-description p {
+  margin-block-end: 15px;
+  font-family: "Times", serif;
+  font-size: 20px;
+}
+
+.job-listing-show-description li {
+  list-style: disc;
+  font-size: 20px;
 }
 
 .job-listing-show-title {

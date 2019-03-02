@@ -12,11 +12,11 @@ class JobListingsShow extends React.Component {
   }
 
   displayDescription() {
-    let testStr = "## Hello *world*";
-    let markdownStr = "boo";
+    const jobListing = this.props.jobListings[this.props.jobListingId];
+    let description = jobListing.description;
     const reader = new commonmark.Parser();
     const writer = new commonmark.HtmlRenderer();
-    const parsed = reader.parse(markdownStr);
+    const parsed = reader.parse(description);
     const result = writer.render(parsed);
     const htmlObj = { __html: result };
     return <div dangerouslySetInnerHTML={htmlObj} />;
@@ -52,7 +52,6 @@ class JobListingsShow extends React.Component {
           </aside>
           <div className="job-listing-show-description">
             {this.displayDescription()}
-            {jobListing.description}
             <br />
             <ApplyNowLink applyLink={jobListing.application_url} />
           </div>
