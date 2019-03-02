@@ -12,10 +12,12 @@ class JobListingsShow extends React.Component {
   }
 
   displayDescription() {
-    var reader = new commonmark.Parser();
-    var writer = new commonmark.HtmlRenderer();
-    var parsed = reader.parse("Hello *world*");
-    var result = writer.render(parsed);
+    let testStr = "## Hello *world*";
+    let markdownStr = "boo";
+    const reader = new commonmark.Parser();
+    const writer = new commonmark.HtmlRenderer();
+    const parsed = reader.parse(markdownStr);
+    const result = writer.render(parsed);
     const htmlObj = { __html: result };
     return <div dangerouslySetInnerHTML={htmlObj} />;
   }
