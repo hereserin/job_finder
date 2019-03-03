@@ -1,10 +1,11 @@
 class Api::SearchController < ApplicationController
 
   def index
-    
+
     if params[:query].empty?
       @job_listings = JobListing.includes(:company).all
     else
+      
       @job_listings = JobListing.search_title_keyword_company(query_to_array(params[:query]))
     end
     render 'api/job_listings/index'

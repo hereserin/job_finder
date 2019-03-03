@@ -29,6 +29,7 @@ class JobListing < ApplicationRecord
   through: :jobs_skills
 
   def self.search_title_keyword_company(query_array)
+    print query_array
     if query_array.length == 1
 
       return JobListing
@@ -48,9 +49,9 @@ class JobListing < ApplicationRecord
     .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
     .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
     .where("lower(title) LIKE ? OR lower(keywords.keyword) LIKE ? OR lower(companies.name) LIKE ?",
-    "%#{query_array[0].downcase}%",
-    "%#{query_array[0].downcase}%",
-    "%#{query_array[0].downcase}%")
+    "%#{query_array[-1].downcase}%",
+    "%#{query_array[-1].downcase}%",
+    "%#{query_array[-1].downcase}%")
       .or(JobListing.search_title_keyword_company(query_array[0..-2]))
   end
 
