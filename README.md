@@ -1,24 +1,22 @@
-# README
+# JobFinder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+JobFinder allows users to search and view job listings.
 
-Things you may want to cover:
+## Go to live version:
 
-* Ruby version
+[Live version](https://job-finder-app.herokuapp.com/#/)
 
-* System dependencies
+## Deploy on Local Host:
 
-* Configuration
+### Setup project:
 
-* Database creation
+1.  Download JobFinder
+2.  Run `bundle install`
+3.  Run `npm install`
+4.  Run `bundle exec rails db:setup`
 
-* Database initialization
+### Run on local server:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1.  Run `npm run webpack`
+2.  Run `bundle exec rails server`
+3.  In browser, visit `localhost:3000`
