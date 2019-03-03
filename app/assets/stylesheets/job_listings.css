@@ -10,6 +10,17 @@
   font-family: "Roboto Condensed", sans-serif;
 }
 
+.job-search-container {
+  margin-top: 135px;
+  width: 99%;
+  display: flex;
+}
+
+.job-listing-index-section {
+  width: 100%;
+  margin: 30px;
+}
+
 .job-listing-index {
   align-items: center;
 }
@@ -17,6 +28,13 @@
 .job-listing-index-item-company {
   font-family: "Ubuntu", sans-serif;
   color: var(--grey);
+}
+
+.job-search-filter-menu {
+  background-color: white;
+  width: 30%;
+  height: 1000px;
+  padding: 25px;
 }
 
 .job-listing-index-item-title {

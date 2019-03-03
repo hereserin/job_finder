@@ -1,8 +1,12 @@
 .search-bar {
   background-color: white;
   box-shadow: 1px 1px 2px 1px var(--grey);
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   padding: 1px;
+  z-index: 10;
+  position: fixed;
+  top: 61px;
+  width: 100%;
 }
 
 .search-bar-input-and-button-container {

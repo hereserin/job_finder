@@ -11,8 +11,6 @@ import * as QueryParsers from "./../util/search_query_parsers";
 
 class JobListingsIndex extends React.Component {
   componentDidMount() {
-    // this.props.clearJobListings;
-    // debugger;
     if (this.props.query === undefined) {
       this.props.fetchJobListings();
     } else if (
@@ -57,9 +55,12 @@ class JobListingsIndex extends React.Component {
 
   render() {
     return (
-      <section>
-        <ul className="job-listing-index">{this.composeJobsList()}</ul>
-      </section>
+      <div className="job-search-container">
+        <aside className="job-search-filter-menu">Filters</aside>
+        <section className="job-listing-index-section">
+          <ul className="job-listing-index">{this.composeJobsList()}</ul>
+        </section>
+      </div>
     );
   }
 }
