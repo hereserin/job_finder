@@ -26,9 +26,3 @@ const filtersReducer = (state = initialState, action) => {
 };
 
 export default filtersReducer;
-
-// filter looks like this:
-// {name: name/catagory, numberId: id}
-
-// state looks like this:
-// filters: { regions: [ 3, 5, 11], skills: [ 22, 9, 42]}
