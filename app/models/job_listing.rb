@@ -28,11 +28,11 @@ class JobListing < ApplicationRecord
   has_many :skills,
   through: :jobs_skills
 
-  def self.filter(filters)
-    
-    return JobListing.where({filter_hash})
-
-  end
+  # def self.filter(filters)
+  #
+  #   return JobListing.where({filter_hash})
+  #
+  # end
 
   def self.search_title_keyword_company(query_array)
     print query_array

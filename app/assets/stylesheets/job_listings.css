@@ -31,10 +31,34 @@
 }
 
 .job-search-filter-menu {
+  margin-top: 5px;
   background-color: white;
   width: 30%;
   height: 1000px;
   padding: 25px;
+  padding-top: 75px;
+}
+
+.job-search-filter-menu-checkbox-item {
+  display: flex;
+  margin: 3px;
+}
+
+.job-search-filter-menu-label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.job-search-filter-menu-checkbox {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
 }
 
 .job-listing-index-item-title {

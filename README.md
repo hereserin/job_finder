@@ -4,13 +4,13 @@ JobFinder allows users to search and view job listings.
 
 ## Go to live version:
 
-[Live version](https://job-finder-app.herokuapp.com/#/)
+[JobFinder](https://job-finder-app.herokuapp.com/#/)
 
-## Deploy on Local Host:
+## Deploy on LocalHost:
 
 ### Setup project:
 
-1.  Download JobFinder
+1.  Download JobFinder, and go to directory
 2.  Run `bundle install`
 3.  Run `npm install`
 4.  Run `bundle exec rails db:setup`

@@ -7,6 +7,7 @@ import {
   clearJobListings
 } from "../actions/job_listings_actions";
 import JobListingIndexItem from "./job_listing_index_item";
+import FilterMenu from "./filter_menu";
 import * as QueryParsers from "./../util/search_query_parsers";
 
 class JobListingsIndex extends React.Component {
@@ -56,7 +57,9 @@ class JobListingsIndex extends React.Component {
   render() {
     return (
       <div className="job-search-container">
-        <aside className="job-search-filter-menu">Filters</aside>
+        <aside className="job-search-filter-menu">
+          <FilterMenu />
+        </aside>
         <section className="job-listing-index-section">
           <ul className="job-listing-index">{this.composeJobsList()}</ul>
         </section>
