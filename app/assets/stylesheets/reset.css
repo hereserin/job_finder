@@ -103,3 +103,12 @@ input {
   border-color: var(--light-grey);
   border-width: thin;
 }
+
+nav {
+  display: flex;
+  align-content: space-between;
+}
+
+nav div {
+  padding-left: 100px;
+}

@@ -19,7 +19,11 @@ class JobListing < ApplicationRecord
   belongs_to :region
   belongs_to :experience_level
 
-  has_many :jobs_skills
+  has_many :jobs_skills,
+  class_name: 'JobsSkill',
+  foreign_key: :job_id,
+  primary_key: :id
+
   has_many :jobs_keywords
 
   has_many :keywords,
@@ -40,6 +44,8 @@ class JobListing < ApplicationRecord
 
       return JobListing
         .includes(:company)
+        .includes(:skills)
+        .includes(:experience_level)
         .joins("LEFT OUTER JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
         .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
         .joins("INNER JOIN companies ON companies.id = job_listings.company_id")
@@ -51,6 +57,8 @@ class JobListing < ApplicationRecord
 
     JobListing
     .includes(:company)
+    .includes(:skills)
+    .includes(:experience_level)
     .joins("LEFT OUTER JOIN jobs_keywords ON jobs_keywords.job_id = job_listings.id")
     .joins("INNER JOIN keywords ON jobs_keywords.keyword_id = keywords.id")
     .joins("INNER JOIN companies ON companies.id = job_listings.company_id")

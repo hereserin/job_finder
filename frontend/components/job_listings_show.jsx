@@ -49,6 +49,7 @@ class JobListingsShow extends React.Component {
             <br />
             <h3>Company Info:</h3>
             {company.description}
+            <h4>Location: {jobListing.location}</h4>
           </aside>
           <div className="job-listing-show-description">
             {this.displayDescription()}

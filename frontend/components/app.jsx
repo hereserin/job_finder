@@ -16,6 +16,7 @@ const App = () => {
         <Route exact path="/job_listings" component={SearchBar} />
         <Route exact path="/" component={SearchBar} />
       </Switch>
+      <Route exact path="/" component={JobListingsIndex} />
       <Route path="/job_listings/search/:query" component={JobListingsIndex} />
       <Route
         exact

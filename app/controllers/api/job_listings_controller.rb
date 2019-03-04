@@ -1,6 +1,6 @@
 class Api::JobListingsController < ApplicationController
   def index
-    @job_listings = JobListing.includes(:company).all
+    @job_listings = JobListing.includes(:company).includes(:skills).includes(:experience_level).all
     render 'api/job_listings/index'
   end
 

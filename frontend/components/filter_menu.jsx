@@ -28,6 +28,10 @@ class FilterMenu extends React.Component {
               numberId: levelId
             });
           }}
+          filterObject={{
+            name: "experienceLevels",
+            numberId: levelId
+          }}
         />
       );
     });
@@ -46,6 +50,10 @@ class FilterMenu extends React.Component {
           filterCallback={() => {
             this.props.turnOnFilter({ name: "regions", numberId: regionId });
           }}
+          filterObject={{
+            name: "regions",
+            numberId: regionId
+          }}
         />
       );
     });
@@ -63,6 +71,10 @@ class FilterMenu extends React.Component {
           itemName={skillName}
           filterCallback={() => {
             this.props.turnOnFilter({ name: "skills", numberId: skillId });
+          }}
+          filterObject={{
+            name: "skills",
+            numberId: skillId
           }}
         />
       );

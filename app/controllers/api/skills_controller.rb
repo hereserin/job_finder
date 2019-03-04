@@ -1,6 +1,6 @@
 class Api::SkillsController < ApplicationController
   def index
-    @skills = Skill.all
+    @skills = Skill.order(:skill).all
     render 'api/skills/index'
   end
 

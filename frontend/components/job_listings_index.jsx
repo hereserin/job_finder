@@ -9,8 +9,14 @@ import {
 import JobListingIndexItem from "./job_listing_index_item";
 import FilterMenu from "./filter_menu";
 import * as QueryParsers from "./../util/search_query_parsers";
+import Loader from "./loader";
 
 class JobListingsIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.mapThroughFilters = this.mapThroughFilters.bind(this);
+  }
+
   componentDidMount() {
     if (this.props.query === undefined) {
       this.props.fetchJobListings();
@@ -28,18 +34,55 @@ class JobListingsIndex extends React.Component {
     return QueryParsers.parseUrlToUserInput(urlQuery);
   }
 
+  mapThroughFilters() {
+    const filters = this.props.filters;
+    const allJobListings = this.props.jobListings;
+    const allListingsIdsArray = Object.keys(allJobListings);
+    const allListingsArray = allListingsIdsArray.map(id => {
+      return allJobListings[id];
+    });
+    const filteredListingsArray = allListingsArray
+      .filter(listing => {
+        if (
+          filters.experienceLevels !== undefined &&
+          filters.experienceLevels.length > 0
+        ) {
+          return filters.experienceLevels.includes(listing.experience_level);
+        }
+        return true;
+      })
+      .filter(listing => {
+        if (filters.regions !== undefined && filters.regions.length > 0) {
+          return filters.regions.includes(listing.region_id);
+        }
+        return true;
+      })
+      .filter(listing => {
+        if (filters.skills !== undefined && filters.skills.length > 0) {
+          let matchExists = false;
+          listing.skills.forEach(skillId => {
+            if (filters.skills.includes(skillId)) {
+              matchExists = true;
+            }
+          });
+          return matchExists;
+        }
+        return true;
+      });
+    return filteredListingsArray;
+  }
+
   mapJobsListings() {
+    const filteredJobListings = this.mapThroughFilters();
     const jobListings = this.props.jobListings;
-    const jobsListingsArray = Object.keys(jobListings).map(id => {
+    const jobsListingsArray = filteredJobListings.map(id => {
       return jobListings[id];
     });
-    console.log(jobsListingsArray);
-    return jobsListingsArray;
+    return filteredJobListings;
   }
 
   composeJobsList() {
     const jobsArr = this.mapJobsListings();
-    console.log(jobsArr);
     const list = jobsArr.map(jobListing => {
       return (
         <JobListingIndexItem
@@ -51,10 +94,20 @@ class JobListingsIndex extends React.Component {
         />
       );
     });
+    if (list.length === 0) {
+      return (
+        <li>
+          <h4>(no results)</h4>
+        </li>
+      );
+    }
     return list;
   }
 
   render() {
+    if (this.props.loading || this.props.jobListings === undefined) {
+      return <Loader />;
+    }
     return (
       <div className="job-search-container">
         <aside className="job-search-filter-menu">
@@ -72,7 +125,8 @@ const mapStateToProps = ({ entities, ui }, ownProps) => {
   return {
     jobListings: entities.jobListings,
     query: ownProps.match.params.query,
-    loading: ui.loading.jobListingsLoading
+    loading: ui.loading.jobListingsLoading,
+    filters: ui.filters
   };
 };
 
